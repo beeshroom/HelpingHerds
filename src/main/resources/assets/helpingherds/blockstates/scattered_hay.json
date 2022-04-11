@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "helpingherds:block/scattered_hay"
+      },
+      {
+        "model": "helpingherds:block/scattered_hay",
+        "y": 90
+      },
+      {
+        "model": "helpingherds:block/scattered_hay",
+        "y": 180
+      },
+      {
+        "model": "helpingherds:block/scattered_hay",
+        "y": 270
+      }
+    ]
+  }
+}
