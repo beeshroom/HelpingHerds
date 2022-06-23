@@ -50,7 +50,7 @@ description='''
 Some adjustments and potential improvements to our animal friends in Minecraft!
 '''
 itemIcon="minecraft:wheat"
-configBackground="minecraft:textures/block/hay_bale.png"
+configBackground="minecraft:textures/block/hay_block_top.png"
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.helpingherds]] #optional

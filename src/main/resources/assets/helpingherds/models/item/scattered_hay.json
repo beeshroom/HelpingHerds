@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "helpingherds:block/scattered_hay"
-  }
+  "parent": "helpingherds:block/scattered_hay"
 }
