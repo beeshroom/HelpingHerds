@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import bee.beeshroom.helpingherds.core.init.BlockInit;
+import bee.beeshroom.helpingherds.core.init.EffectsInit;
 import bee.beeshroom.helpingherds.core.init.ItemInit;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -14,7 +15,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-
 
 @Mod(HelpingHerds.MOD_ID)
 public class HelpingHerds {
@@ -30,13 +30,13 @@ public class HelpingHerds {
 		//MinecraftForge.EVENT_BUS.register(this);
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
+	//	ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
 		
 	//	Enchantments.ENCHANTMENTS.register(bus);
 		ItemInit.ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
 
-	//	EffectsInit.EFFECTS.register(bus);
+		EffectsInit.EFFECTS.register(bus);
 
 		//MinecraftForge.EVENT_BUS.register(this);
 
@@ -49,6 +49,15 @@ public class HelpingHerds {
 	    {
 	        RenderTypeLookup.setRenderLayer(BlockInit.SCATTERED_HAY.get(), RenderType.cutout());
 	     } 
+	 
+	/*	private void setup(final FMLCommonSetupEvent event) {// K9#8016
+			DeferredWorkQueue.runLater(() -> {
+				ComposterBlock.registerCompostable(0.6f, BlockInit.JAZZ_LEAVES.get());
+			});
+			DeferredWorkQueue.runLater(() -> {
+				ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get());
+			});
+		}*/
 
 	/* public static class HelpingHerdsGroup extends ItemGroup {
 

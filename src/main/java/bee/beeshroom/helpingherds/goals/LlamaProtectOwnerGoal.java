@@ -2,12 +2,10 @@ package bee.beeshroom.helpingherds.goals;
 
 import java.util.EnumSet;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TargetGoal;
-import net.minecraft.entity.item.LeashKnotEntity;
 import net.minecraft.entity.passive.horse.LlamaEntity;
 import net.minecraft.entity.player.PlayerEntity;
 
@@ -25,6 +23,77 @@ import net.minecraft.entity.player.PlayerEntity;
 //
 
 public class LlamaProtectOwnerGoal extends TargetGoal {
+	   private final LlamaEntity llama;
+	      private LivingEntity ownerLastHurtBy;
+	      private int timestamp;
+
+	      public LlamaProtectOwnerGoal(LlamaEntity p_i50458_2_) {
+	         super(p_i50458_2_, false);
+	         this.llama = p_i50458_2_;
+	         this.setFlags(EnumSet.of(Goal.Flag.TARGET));
+	      }
+
+	      public boolean canUse() {
+	          if (this.llama.isTamed() && this.llama.isLeashed() && this.llama.getLeashHolder() instanceof LivingEntity) {
+	             LivingEntity livingentity = (LivingEntity) this.llama.getLeashHolder();
+	             if (livingentity == null) {
+	                return false;
+	             } 
+	             if (!(this.llama.getLeashHolder() instanceof PlayerEntity)) {
+		                return false;
+		             }
+	             else {
+	                this.ownerLastHurtBy = livingentity.getLastHurtByMob();
+	                int i = livingentity.getLastHurtByMobTimestamp();
+	                return i != this.timestamp && this.canAttack(this.ownerLastHurtBy, EntityPredicate.DEFAULT);
+	             }
+	          } else {
+	             return false;
+	          }
+	       }
+
+	       public void start() {
+	          this.mob.setTarget(this.ownerLastHurtBy);
+	          LivingEntity livingentity = (LivingEntity) this.llama.getLeashHolder();
+	          if (livingentity != null) {
+	       //      this.timestamp = livingentity.getLastHurtByMobTimestamp();
+	        	  this.timestamp = 60;
+	          }
+
+	          super.start();
+	       }
+	       
+}
+	      
+	/*      public boolean canUse() {
+	         if (!this.llama.isLeashed() || !this.llama.isTamed()) {
+	            return false;
+	         } else {
+	            Entity entity = this.llama.getLeashHolder();
+	            if (!(entity instanceof PlayerEntity)) {
+	               return false;
+	            } else {
+	                PlayerEntity playerentity = (PlayerEntity)entity;
+	               this.ownerLastHurtBy = playerentity.getLastHurtByMob();
+	               int i = playerentity.getLastHurtByMobTimestamp();
+	               return i != this.timestamp && this.canAttack(this.ownerLastHurtBy, EntityPredicate.DEFAULT);
+	            }
+	         }
+	      }
+	      
+	      public void start() {
+	         this.mob.setTarget(this.ownerLastHurtBy);
+	         Entity entity = this.llama.getLeashHolder();
+	         if (entity instanceof PlayerEntity) {
+	            this.timestamp = ((PlayerEntity)entity).getLastHurtByMobTimestamp();
+	         }
+
+	         super.start();
+	      }
+	   } */
+
+/*
+public class LlamaProtectOwnerGoal extends TargetGoal {
     private final LlamaEntity llama;
     private LivingEntity ownerLastHurtBy;
     private int timestamp;
@@ -37,7 +106,7 @@ public class LlamaProtectOwnerGoal extends TargetGoal {
 
     public boolean canUse() 
     {
-       if ((!this.llama.isLeashed()) || (!this.llama.isTamed()) || this.llama.getLeashHolder() == null) {
+       if ((!this.llama.isLeashed()) || (!this.llama.isTamed()) || this.llama.getLeashHolder() == null || this.llama.getLeashHolder() instanceof WanderingTraderEntity) {
     	   return false;
        } 
        else 
@@ -116,4 +185,4 @@ public class LlamaProtectOwnerGoal extends TargetGoal {
         this.targetMob = null;
      }  
     
- }
+ } */

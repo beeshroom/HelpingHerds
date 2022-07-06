@@ -1,7 +1,21 @@
 {
 "itemGroup.helpingherdsgroup": "Helping Herds",
 
-"block.helpingherds.scattered_hay": "Scattered Hay"
+"block.helpingherds.scattered_hay": "Scattered Hay",
+
+"effect.helpingherds.slobbered": "Slobbered",
+
+"effect.helpingherds.slobbered.0.desc": "Immobilized",
+
+"item.minecraft.potion.effect.slobbered": "Potion of Slobber",
+"item.minecraft.splash_potion.effect.slobbered": "Splash Potion of Slobber",
+"item.minecraft.lingering_potion.effect.slobbered": "Lingering Potion of Slobber",
+"item.minecraft.tipped_arrow.effect.slobbered": "Arrow of Slobber",
+
+"item.minecraft.potion.effect.long_slobbered": "Potion of Slobber",
+"item.minecraft.splash_potion.effect.long_slobbered": "Splash Potion of Slobber",
+"item.minecraft.lingering_potion.effect.long_slobbered": "Lingering Potion of Slobber",
+"item.minecraft.tipped_arrow.effect.long_slobbered": "Arrow of Slobber"
 }
 
 

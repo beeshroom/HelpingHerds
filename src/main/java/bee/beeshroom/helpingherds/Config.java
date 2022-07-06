@@ -11,7 +11,7 @@ import net.minecraftforge.fml.config.ModConfig;
 public class Config {
 
 	public static ForgeConfigSpec COMMON_CONFIG;
-	public static ForgeConfigSpec CLIENT_CONFIG;
+	//public static ForgeConfigSpec CLIENT_CONFIG;
 	
 	//
 	public static final String CATEGORY_SETTINGS = "settings";
@@ -19,13 +19,19 @@ public class Config {
 	public static ForgeConfigSpec.BooleanValue PUNCH_CHICKEN_GET_FEATHER;
 	public static ForgeConfigSpec.BooleanValue FEATHER_SHED;
 	public static ForgeConfigSpec.BooleanValue FARM_ANIMAL_DROPS;
+//	public static ForgeConfigSpec.BooleanValue HEAL_FARM_ANIMALS;
 	public static ForgeConfigSpec.BooleanValue TEMPT_HORSE_AND_LLAMA;
 	public static ForgeConfigSpec.BooleanValue LLAMA_BODYGUARD;
 	public static ForgeConfigSpec.BooleanValue LLAMA_ARMOR;
 	public static ForgeConfigSpec.BooleanValue LLAMA_SPIT_BUFF;
+	public static ForgeConfigSpec.BooleanValue WANDERING_TRADER_SQUAD;
+	public static ForgeConfigSpec.BooleanValue ATTACH_LLAMAS_TO_WANDERING_TRADER;
+	public static ForgeConfigSpec.BooleanValue RIDER_BREAK_SPEED;
+	public static ForgeConfigSpec.BooleanValue SLOBBERED_EFFECT;
+	public static ForgeConfigSpec.BooleanValue ALL_LLAMAS_MAX_SLOTS;
 
 	//
-	public static final String CATEGORY_CLIENT = "client";
+	//public static final String CATEGORY_CLIENT = "client";
 
 	static {
 		ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
@@ -58,10 +64,28 @@ public class Config {
 				.define("enableLlamaArmor", true);
 		
 		LLAMA_SPIT_BUFF = COMMON_BUILDER
-				.comment("Llama spit has more knockback and applies a slowness effect for a few seconds (Default: true)")
+				.comment("Llama spit has more knockback (Default: true)")
 				.define("enableLlamaSpitBuff", true);
+
+		SLOBBERED_EFFECT = COMMON_BUILDER
+				.comment("Being spit on by a Llama will apply an effect that slows the target down (Default: true)")
+				.define("enableSlobberedEffect", true);	
 		
+		WANDERING_TRADER_SQUAD = COMMON_BUILDER
+				.comment("Crouch and face the sky while holding a Wandering Trader Spawn egg to summon a Wandering Trader with 2 llamas (Default: true)")
+				.define("enableWanderingTraderSquad", true);
 		
+		ATTACH_LLAMAS_TO_WANDERING_TRADER = COMMON_BUILDER
+				.comment("Interact with a Wandering Trader while holding a Trader Llama spawn egg to attach a Trade Llama to it (Default: true)")
+				.define("enableAttachLlamasToWanderingTrader", true);
+		
+		RIDER_BREAK_SPEED = COMMON_BUILDER
+				.comment("Breaking blocks while riding a mob or being in a Minecart/Boat won't be slow (Default: true)")
+				.define("enableRiderBreakSpeed", true);
+		
+		ALL_LLAMAS_MAX_SLOTS = COMMON_BUILDER
+				.comment("Every Llama with a chest equipped will have the maximum number of chest slots (Default: true)")
+				.define("enableLlamaMaxChestSlots", true);
 		
 		//
 		
@@ -69,11 +93,11 @@ public class Config {
 		
 		COMMON_CONFIG = COMMON_BUILDER.build();
 
-		ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
+		//ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
 
-		CLIENT_BUILDER.comment("Client settings").push(CATEGORY_CLIENT);
+		//CLIENT_BUILDER.comment("Client settings").push(CATEGORY_CLIENT);
 
-		CLIENT_CONFIG = CLIENT_BUILDER.build();
+		//CLIENT_CONFIG = CLIENT_BUILDER.build();
 	}
 	
 	
