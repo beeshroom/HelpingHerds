@@ -70,15 +70,15 @@ public class HelpingHerdsEvents {
 	@SubscribeEvent
 	public static void PunchChicken(LivingDamageEvent event)
 	{
-		Entity entity = event.getEntity();
+		LivingEntity entity = event.getEntityLiving();
 		DamageSource source = event.getSource();
-		LivingEntity attacker = (LivingEntity)source.getEntity();
+		Entity attacker = source.getEntity();
 		
 		if (Config.PUNCH_CHICKEN_GET_FEATHER.get())
 		{
-		Random random = ((LivingEntity) entity).getRandom();
+		Random random = entity.getRandom();
 		
-		if (entity instanceof ChickenEntity && !((LivingEntity) entity).isBaby()
+		if (entity instanceof ChickenEntity && !entity.isBaby()
 				&& entity.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT))
 		{
 			if (random.nextInt(10) < 4)
@@ -105,23 +105,23 @@ public class HelpingHerdsEvents {
 		{
 			if (attacker instanceof LlamaEntity) 
 			{
-				Random random = ((LivingEntity) entity).getRandom();
+				Random random = entity.getRandom();
 //I referenced CreeperEntity code for this
-				Collection<EffectInstance> collection = attacker.getActiveEffects();
+				Collection<EffectInstance> collection = ((LlamaEntity) attacker).getActiveEffects();
 			
 				if (Config.SLOBBERED_EFFECT.get())
 				{
-				((LivingEntity) entity).addEffect(new EffectInstance(EffectsInit.SLOBBERED.get(), 100, 0));
+				entity.addEffect(new EffectInstance(EffectsInit.SLOBBERED.get(), 100, 0));
 				 }
 				
 				 if (!collection.isEmpty()) {
 					 for(EffectInstance effectinstance : collection) {
-				            ((LivingEntity) entity).addEffect(new EffectInstance(effectinstance));
+				            entity.addEffect(new EffectInstance(effectinstance));
 				         }
 				 }
 				
 				
-				((LivingEntity)entity).push(.30D, .20D, .30D);
+				entity.push(.30D, .20D, .30D);
 				event.setAmount(event.getAmount() + 0.5f);
 				
 				if (random.nextInt(3) == 0) {
